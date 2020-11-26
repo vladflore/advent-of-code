@@ -16,6 +16,23 @@ public class DayTwo {
         int[] ints = Arrays.stream(scanner.nextLine().split(","))
                 .mapToInt(Integer::valueOf)
                 .toArray();
-        System.out.println(Arrays.toString(ints));
+
+        ints[1] = 12;
+        ints[2] = 2;
+
+        int idx = 0;
+        int opcode = ints[idx];
+        while (opcode != 99) {
+            if (opcode == 1) {
+                ints[ints[idx + 3]] = ints[ints[idx + 1]] + ints[ints[idx + 2]];
+            } else if (opcode == 2) {
+                ints[ints[idx + 3]] = ints[ints[idx + 1]] * ints[ints[idx + 2]];
+            }
+            idx += 4;
+            opcode=ints[idx];
+        }
+
+        scanner.close();
+        System.out.println(ints[0]);
     }
 }
