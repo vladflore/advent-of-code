@@ -10,29 +10,52 @@ import java.util.Scanner;
  * https://adventofcode.com/2019/day/2
  */
 public class DayTwo {
+    public static final int HALT = 99;
+    public static final int ADD = 1;
+    public static final int MULTIPLY = 2;
+    public static final int STEP = 4;
+    public static final int MAX_VALUE = 100;
+    public static final int TARGET_VALUE = 19_690_720;
+
     public static void main(String[] args) throws IOException, URISyntaxException {
         Path path = Paths.get(Objects.requireNonNull(DayTwo.class.getClassLoader().getResource("input.data")).toURI());
         Scanner scanner = new Scanner(path);
-        int[] ints = Arrays.stream(scanner.nextLine().split(","))
+        int[] program = Arrays.stream(scanner.nextLine().split(","))
                 .mapToInt(Integer::valueOf)
                 .toArray();
-
-        ints[1] = 12;
-        ints[2] = 2;
-
-        int idx = 0;
-        int opcode = ints[idx];
-        while (opcode != 99) {
-            if (opcode == 1) {
-                ints[ints[idx + 3]] = ints[ints[idx + 1]] + ints[ints[idx + 2]];
-            } else if (opcode == 2) {
-                ints[ints[idx + 3]] = ints[ints[idx + 1]] * ints[ints[idx + 2]];
+        for (int noun = 0; noun < MAX_VALUE; noun++) {
+            for (int verb = 0; verb < MAX_VALUE; verb++) {
+                int value = getMemoryValueAtAddressZero(Arrays.copyOf(program, program.length), noun, verb);
+                if (value == TARGET_VALUE) {
+                    System.out.println(MAX_VALUE * noun + verb);
+                    // answer: 4259
+                    return;
+                }
             }
-            idx += 4;
-            opcode=ints[idx];
         }
-
         scanner.close();
-        System.out.println(ints[0]);
+    }
+
+    private static int getMemoryValueAtAddressZero(int[] workingMemory, int startNoun, int startVerb) {
+        workingMemory[1] = startNoun;
+        workingMemory[2] = startVerb;
+        int instructionPointer = 0;
+        int opcode = workingMemory[instructionPointer];
+        while (opcode != HALT) {
+            int instrParam1 = workingMemory[instructionPointer + 1];
+            int instrParam2 = workingMemory[instructionPointer + 2];
+            int instrParam3 = workingMemory[instructionPointer + 3];
+            if (opcode == ADD) {
+                workingMemory[instrParam3] = workingMemory[instrParam1] + workingMemory[instrParam2];
+            } else if (opcode == MULTIPLY) {
+                workingMemory[instrParam3] = workingMemory[instrParam1] * workingMemory[instrParam2];
+            }
+            instructionPointer += STEP;
+            if (instructionPointer > workingMemory.length - 1) {
+                break;
+            }
+            opcode = workingMemory[instructionPointer];
+        }
+        return workingMemory[0];
     }
 }
