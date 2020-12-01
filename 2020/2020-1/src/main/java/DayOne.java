@@ -19,10 +19,12 @@ public class DayOne {
     private static long solve() throws URISyntaxException, IOException {
         Path path = Paths.get(Objects.requireNonNull(DayOne.class.getClassLoader().getResource("input.data")).toURI());
         List<Integer> expenseReport = Files.lines(path).mapToInt(Integer::parseInt).boxed().collect(Collectors.toList());
-        for (int i = 0; i < expenseReport.size() - 1; i++) {
-            for (int j = i + 1; j < expenseReport.size(); j++) {
-                if (expenseReport.get(i) + expenseReport.get(j) == 2020) {
-                    return expenseReport.get(i) * expenseReport.get(j);
+        for (int i = 0; i < expenseReport.size() - 2; i++) {
+            for (int j = i + 1; j < expenseReport.size() - 1; j++) {
+                for (int k = j + 1; k < expenseReport.size(); k++) {
+                    if (expenseReport.get(i) + expenseReport.get(j) + expenseReport.get(k) == 2020) {
+                        return expenseReport.get(i) * expenseReport.get(j) * expenseReport.get(k);
+                    }
                 }
             }
         }
