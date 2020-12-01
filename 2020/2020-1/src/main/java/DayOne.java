@@ -3,31 +3,20 @@ import java.net.URISyntaxException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.List;
+import java.util.Arrays;
 import java.util.Objects;
-import java.util.stream.Collectors;
 
 /**
  * https://adventofcode.com/2020/day/1
  */
 public class DayOne {
     public static void main(String[] args) throws URISyntaxException, IOException {
-        long ans = solve();
-        System.out.println(ans);
-    }
 
-    private static long solve() throws URISyntaxException, IOException {
         Path path = Paths.get(Objects.requireNonNull(DayOne.class.getClassLoader().getResource("input.data")).toURI());
-        List<Integer> expenseReport = Files.lines(path).mapToInt(Integer::parseInt).boxed().collect(Collectors.toList());
-        for (int i = 0; i < expenseReport.size() - 2; i++) {
-            for (int j = i + 1; j < expenseReport.size() - 1; j++) {
-                for (int k = j + 1; k < expenseReport.size(); k++) {
-                    if (expenseReport.get(i) + expenseReport.get(j) + expenseReport.get(k) == 2020) {
-                        return expenseReport.get(i) * expenseReport.get(j) * expenseReport.get(k);
-                    }
-                }
-            }
-        }
-        return -1;
+        int[] expenseReport = Files.lines(path).mapToInt(Integer::parseInt).toArray();
+
+
+        long[] solution = new Puzzle(expenseReport, 2020).solve();
+        System.out.println(Arrays.toString(solution));
     }
 }
