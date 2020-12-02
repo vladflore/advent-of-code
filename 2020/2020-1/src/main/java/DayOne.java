@@ -16,7 +16,7 @@ public class DayOne {
         int[] expenseReport = Files.lines(path).mapToInt(Integer::parseInt).toArray();
 
 
-        long[] solution = new Puzzle(expenseReport, 2020).solve();
+        int[] solution = new Puzzle(expenseReport, 2020).solve();
         System.out.println(Arrays.toString(solution));
     }
 }

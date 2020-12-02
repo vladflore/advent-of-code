@@ -8,11 +8,11 @@ public class Puzzle {
         this.totalExpense = totalExpense;
     }
 
-    public long[] solve() {
-        return new long[]{solvePart1(expenseReport, totalExpense), solvePart2(expenseReport, totalExpense)};
+    public int[] solve() {
+        return new int[]{solvePart1(expenseReport, totalExpense), solvePart2(expenseReport, totalExpense)};
     }
 
-    private long solvePart1(int[] expenseReport, int totalExpense) {
+    private int solvePart1(int[] expenseReport, int totalExpense) {
         for (int i = 0; i < expenseReport.length - 1; i++) {
             for (int j = i + 1; j < expenseReport.length; j++) {
                 if (expenseReport[i] + expenseReport[j] == totalExpense) {
@@ -23,7 +23,7 @@ public class Puzzle {
         return 0;
     }
 
-    private long solvePart2(int[] expenseReport, int totalExpense) {
+    private int solvePart2(int[] expenseReport, int totalExpense) {
         for (int i = 0; i < expenseReport.length - 2; i++) {
             for (int j = i + 1; j < expenseReport.length - 1; j++) {
                 for (int k = j + 1; k < expenseReport.length; k++) {
