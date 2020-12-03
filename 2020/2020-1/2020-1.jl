@@ -1,8 +1,6 @@
-function get_data_from_file(filepath)
-    open(filepath) do file
+get_data_from_file(filepath) = open(filepath) do file
         return [parse(Int, ln) for ln in eachline(file)]
     end
-end
 
 function solvePartOne()
     for i in 1:length(data) - 1, j in i + 1:length(data)
