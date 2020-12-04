@@ -13,6 +13,7 @@ public class DayFour {
         int[] solution = new Puzzle(Files.readString(path)).solve();
         System.out.println(Arrays.toString(solution));
 
-        // correct answer: [228, 176]
+        // correct answer: [228, 175]
+        // my answer: [228, 176]
     }
 }
