@@ -1,6 +1,8 @@
+__pycache__
+aoc_env
+.settings
+.classpath
+.project
 .idea
 target
 *.iml
-.settings
-.project
-.classpath
