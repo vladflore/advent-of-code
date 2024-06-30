@@ -1,12 +1,13 @@
-import org.junit.jupiter.api.Test;
-import tech.vladflore.Solve_2;
-
 import java.util.Arrays;
+
+import org.junit.jupiter.api.Test;
+
+import tech.vladflore.Solve_2;
 
 public class Solve_2Test {
 
     @Test
-    void day_two_part_one() {
+    void part_one() {
         String input = """
                 Game 1: 3 blue, 4 red; 1 red, 2 green, 6 blue; 2 green
                 Game 2: 1 blue, 2 green; 3 green, 4 blue, 1 red; 1 green, 1 blue
@@ -21,7 +22,7 @@ public class Solve_2Test {
     }
 
     @Test
-    void day_two_part_two() {
+    void part_two() {
         String input = """
                 Game 1: 3 blue, 4 red; 1 red, 2 green, 6 blue; 2 green
                 Game 2: 1 blue, 2 green; 3 green, 4 blue, 1 red; 1 green, 1 blue

@@ -1,12 +1,13 @@
-import org.junit.jupiter.api.Test;
-import tech.vladflore.Solve_1;
-
 import java.util.Arrays;
+
+import org.junit.jupiter.api.Test;
+
+import tech.vladflore.Solve_1;
 
 public class Solve_1Test {
 
     @Test
-    void day_one_part_one() {
+    void part_one() {
         String input = """
                 1abc2
                 pqr3stu8vwx
@@ -20,7 +21,7 @@ public class Solve_1Test {
     }
 
     @Test
-    void day_one_part_two() {
+    void part_two() {
         String input = """
                 two1nine
                 eightwothree

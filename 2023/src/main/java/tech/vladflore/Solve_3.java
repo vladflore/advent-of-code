@@ -139,7 +139,7 @@ public class Solve_3 {
         Solve_3 solve = new Solve_3();
         Path inputFile = Paths.get(
                 Objects.requireNonNull(
-                        Solve_2.class.getClassLoader().getResource("input3.data")).toURI());
+                        Solve_3.class.getClassLoader().getResource("input3.data")).toURI());
         List<String> content = Files.lines(inputFile).toList();
         System.out.println(solve.solve_part_one(content));
         var partNumbers = solve.getPartNumbers();

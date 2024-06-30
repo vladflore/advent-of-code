@@ -1,6 +1,5 @@
 import java.util.Arrays;
 
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import tech.vladflore.Solve_3;
@@ -8,7 +7,7 @@ import tech.vladflore.Solve_3;
 public class Solve_3Test {
 
     @Test
-    void day_two_part_one_1() {
+    void part_one_1() {
         String input = """
                 467..114..
                 ...*......
@@ -28,7 +27,7 @@ public class Solve_3Test {
     }
 
     @Test
-    void day_two_part_one_2() {
+    void part_one_2() {
         String input = """
                 ..172..............................454..46
                 ............*.........712........=.......*
@@ -42,7 +41,7 @@ public class Solve_3Test {
     }
 
     @Test
-    void day_two_part_two() {
+    void part_two() {
         String input = """
                 467..114..
                 ...*......
